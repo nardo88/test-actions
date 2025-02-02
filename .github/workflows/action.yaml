@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: get code
         uses: actions/checkout@v4
-      - name: Install deps
+      - name: install deps
 				run: yarn install
       - name: linter
         run: yarn lint
