@@ -3,6 +3,7 @@ on: push
 jobs:
   lint:
     runs-on: ubuntu-latest
+    needs: build # Добавили зависимость от задачи которая идет позже
     steps:
       - name: get code
         uses: actions/checkout@v4
