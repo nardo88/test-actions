@@ -1,0 +1,14 @@
+name: GTActions
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get code
+        uses: action/checkout@v4
+      - name: Install deps
+				run: npm install
+      - name: linter
+        run: yarn
+      - name: build
+        run: yarn build
