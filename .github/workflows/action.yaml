@@ -1,22 +1,18 @@
 name: test actions
 on: push
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    needs: build # Добавили зависимость от задачи которая идет позже
-    steps:
-      - name: get code
-        uses: actions/checkout@v4
-      - name: install deps
-        run: yarn install
-      - name: linter
-        run: yarn lint
   build:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [14, 16]
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: get code
         uses: actions/checkout@v4
-      - name: install deps
-        run: yarn install
+      - name: install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: build
         run: yarn build
