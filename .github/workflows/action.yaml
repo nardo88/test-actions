@@ -7,7 +7,7 @@ jobs:
       - name: get code
         uses: actions/checkout@v4
       - name: install deps
-				run: yarn
+        run: yarn install
       - name: linter
         run: yarn lint
       - name: build
